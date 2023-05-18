@@ -5,13 +5,9 @@ WORKDIR /docker
 
 #install app dependecies
 COPY package*.json ./
+RUN npm install
 
-#copy env file
-COPY .env ./
-
-#copy app source code
+#bundle app source
 COPY . .
 
-EXPOSE 5000
-
-CMD ["node", "server.js"]
+CMD ["npm", "start"]
